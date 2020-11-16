@@ -16,9 +16,9 @@ class ProyectosController extends AbstractController
      */
     public function index(SessionInterface $session, $currentPage, $categoria)
     {
-        $categoria = $this->getDoctrine()->getRepository(Categoria::class)->findOneBy(['categoria' => $categoria]);
+        $categoria = $this->getDoctrine()->getRepository(Categoria::class)->findOneBy(['nombre' => $categoria]);
 
-        $proyectos = $categoria->getPlatos();
+        $proyectos = $categoria->getProyectos();
 
         $nomUsuario = $session->get('nombre_usuario');
         return $this->render('proyectos1.html.twig', [
