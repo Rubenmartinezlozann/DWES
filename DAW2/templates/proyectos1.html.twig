@@ -1,0 +1,112 @@
+{% extends 'layout.html.twig' %}
+
+{% block inicio %}
+	<div class="row">
+		<div class="col-12">
+			<div class="tm-main-bg tm-services-bg"></div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block contenido %}
+	<section class="tm-welcome">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="tm-section-header tm-header-floating">Our Digital Services</h2>
+			</div>
+		</div>
+		<br><br><br>
+		<div class="row">
+			<div class="col-12">
+				{% set categoriaActual = app.request.attributes.get("proyectos/categoria") %}
+				<nav class="navbar navbar-expand-lg">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item {{categoriaActual == " categoria1" ? ' active' : ''}}">
+							<a class="nav-link tm-nav-link" href="{{ path('proyectos',{categoria : "categoria1"}) }}">categoria1</a>
+						</li>
+						<li class="nav-item {{categoriaActual == " categoria2" ? ' active' : ''}}">
+							<a class="nav-link tm-nav-link" href="{{ path('proyectos',{categoria : "categoria2"}) }}">categoria2</a>
+						</li>
+						<li class="nav-item {{categoriaActual == " categoria3" ? ' active' : ''}}">
+							<a class="nav-link tm-nav-link" href="{{ path('proyectos',{categoria : "categoria3"}) }}">categoria3</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+		</div>
+		<div class="row tm-welcome-row tm-services">
+			{% set lowerLimit = (currentPage - 1) * itemsPerPage %}
+			{% set upperLimit = currentPage * itemsPerPage + 1 %}
+			{% for item in data %}
+				{% if loop.index > lowerLimit and loop.index < upperLimit %}
+					<div class="col-md-3 col-sm-6">
+						<figure class="tm-services-img">
+							<img src="{{ asset(item.getImagen(),'img')}}">
+							<figcaption class="tm-service-description">
+								<h4>{{item.getNombre | upper}}</h4>
+								<p>{{item.getDescripcion}}</p>
+							</figcaption>
+						</figure>
+					</div>
+				{% endif %}
+			{% endfor %}
+			{% set lastPage = (((data|length)/itemsPerPage)|round(0,'ceil')) %}
+			{% set remainder = ((((data|length)/itemsPerPage)|round(0,'ceil'))*itemsPerPage-(data|length)) %}
+			{% if lastPage == currentPage and remainder != 0 %}
+				{% for vacios in remainder %}
+					<div class="col-md-3 col-sm-6">
+						<figure class="tm-services-img">
+							<img src="" alt="Image" class="img-fluid">
+							<figcaption class="tm-service-description">
+								<h4>&nbsp</h4>
+								<p>&nbsp</p>
+							</figcaption>
+						</figure>
+					</div>
+				{% endfor %}
+			{% endif %}
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-lg">
+						<ul class="navbar-nav mr-auto">
+							{% for paginator in 1..lastPage %}
+								<li class="nav-item {{currentPage == paginator ? ' active' : ''}}">
+									<a class="nav-link tm-nav-link" href="{{ path('proyectos',{currentPage : paginator}) }}">{{paginator}}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</section>
+
+		<!-- Featured -->
+		<section class="tm-featured">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="tm-section-header tm-section-header-small mb-3">Our Strategic Partners</h2>
+				</div>
+			</div>
+
+			<div class="tm-partners mx-auto">
+				<div>
+					<img src="/img/partner-01.png" alt="Partner Image" class="img-fluid">
+					<img src="/img/partner-02.png" alt="Partner Image" class="img-fluid">
+					<img src="/img/partner-03.png" alt="Partner Image" class="img-fluid">
+					<img src="/img/partner-04.png" alt="Partner Image" class="img-fluid">
+					<img src="/img/partner-05.png" alt="Partner Image" class="img-fluid">
+				</div>
+
+				<p class="tm-partner-text">Etiam et odio ut nibh suscipit eleifend. Sed facilisis, enim nec auctor vehicula, dolor odio venenatis turpis,
+																																																											                        eu vehicula ipsum ligula a nisi. Nam vel nulla sed enim imperdiet fermentum. Mauris venenatis imperdiet
+																																																											                        ex, quis rutrum orci vestibulum tristique. Ut gravida est ac risus dignissim sollicitudin. #999</p>
+
+			</div>
+		</section>
+	{% endblock %}
+	{% block scrpts %}
+		<script src="/js/jquery-3.4.1.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/templatemo-script.js"></script>
+	{% endblock %}

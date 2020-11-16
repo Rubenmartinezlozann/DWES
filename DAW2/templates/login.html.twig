@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+        {% block inicio %}
+        <div class="row">
+            <div class="col-12">
+                <div class="tm-main-bg tm-contact-bg"></div>        
+            </div>
+        </div>
+        {% endblock %}
+            {% block contenido %}
+            <section class="tm-welcome">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="tm-section-header tm-header-floating">Contact Information</h2>         
+                    </div>
+                </div>
+                
+                <div class="row tm-welcome-row">
+                    <div class="col-lg-6 mb-5 tm-contact-box">
+                      <div class="tm-contact-form-wrap">
+                        <form id="contact-form" action="{{ path('login_respuesta') }}" method="post" class="tm-contact-form">
+                            <div class="form-group">
+                              <input type="text" id="nombre" name="nombre" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Name" required="" />
+                            </div>
+                    
+                            <div class="form-group mb-0">
+                              
+                              <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
+                                Login
+                              </button>
+                            </div>
+                          </form>
+                      </div>                    
+                    </div>
+                    <div class="col-lg-6 mb-5 tm-contact-box">
+                      <div class="tm-double-border-1 tm-border-gray">
+                        <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                            <p class="mb-4">
+                              <a rel="nofollow" target="_parent" href="https://templatemo.com/tm-542-new-vision">New Vision</a> HTML Template is free to download instantly from TemplateMo website. In dapibus dui vitae urna fringilla volupat.
+                            </p>
+                            <p class="mb-3">
+                              120-240 Rio de Janeiro - State of Rio de Janeiro, Brazil
+                            </p>
+                            <p class="mb-1">Tel: <a href="tel:0900100910" class="tm-link">090-010-0910</a></p>
+                            <p>Email: <a href="mailto:info@company.com" class="tm-link">info@company.com</a></p>
+                        </div>                    
+                      </div>                  
+                    </div>
+                </div>
+                
+                
+            </section>
+            {% endblock %}
+            
+    {% block scrpts %}
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/templatemo-script.js"></script>
+    {% endblock %}

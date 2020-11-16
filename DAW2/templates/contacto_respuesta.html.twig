@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+        {% block inicio %}
+        <div class="row">
+            <div class="col-12">
+                <div class="tm-main-bg tm-contact-bg"></div>        
+            </div>
+        </div>
+        {% endblock %}
+            {% block contenido %}
+            <section class="tm-welcome">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="tm-section-header tm-header-floating">Contact Information</h2>         
+                    </div>
+                </div>
+                
+                <div class="row tm-welcome-row">
+                    <div class="col-lg-6 mb-5 tm-contact-box">
+                      <div class="tm-contact-form-wrap">
+                        <form id="contact-form" action="{{ path('index') }}" method="post" class="tm-contact-form"></form>
+                            <div class="form-group">
+                              {{nombre_contacto}}<br>
+                              {{email_contacto}}<br>
+                              {{mensaje_contacto}}<br>
+                    
+                            <div class="form-group mb-0">
+                              
+                              <a href="{{ path('index') }}" class="btn rounded-0 d-block ml-auto tm-btn-primary">
+                                Volver a home
+                              </a>
+                            </div>
+                          </form>
+                      </div>                    
+                    </div>
+                    
+                </div>
+                
+                
+            </section>
+            {% endblock %}
+    {% block scrpts %}
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/templatemo-script.js"></script>
+    {% endblock %}

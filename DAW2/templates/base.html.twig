@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		{% block titulo %}
+			<title>{{titulo}}</title>
+		{% endblock %}
+		{% block links %}
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta http-equiv="X-UA-Compatible" content="ie=edge">
+			<link
+			href="/css/bootstrap.min.css" rel="stylesheet"/>
+			<!-- https://getbootstrap.com -->
+			<link href="/css/templatemo-new-vision.css" rel="stylesheet"/>
+			<link href="/https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet"/>
+			<link
+			href="/css/all.min.css" rel="stylesheet"/>
+			<!-- https://fontawesome.com/ -->
+			<link href="/slick/slick.css" rel="stylesheet"/>
+			<link href="/slick/slick-theme.css" rel="stylesheet"/>
+		{% endblock %}
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			{% block navegacion %}
+				<div class="tm-site-header">
+					<div class="row">
+						<div class="col-12 tm-site-header-col">
+							<div class="tm-site-header-left">
+								<i class="far fa-2x fa-eye tm-site-icon"></i>
+								<h1 class="tm-site-name">New Vision</h1>
+							</div>
+							<div
+								class="tm-site-header-right tm-menu-container-outer">
+
+								<!--Navbar-->
+								<nav
+									class="navbar navbar-expand-lg">
+
+									<!-- Collapse button -->
+									<button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+										<span class="dark-blue-text">
+											<i class="fas fa-bars fa-1x"></i>
+										</span>
+									</button>
+
+									<!-- Collapsible content -->
+									<div class="collapse navbar-collapse tm-nav" id="navbarSupportedContent1">
+										{% set ruta = app.request.attributes.get("_rute") %}
+										<!-- Links -->
+										<ul class="navbar-nav mr-auto">
+											<li class="nav-item {{ruta == " index" ? ' active' : ''}}">
+												<a class="nav-link tm-nav-link" href="{{ path('index') }}">Home
+													<span class="sr-only"></span>
+												</a>
+											</li>
+											<li class="nav-item {{ruta == " company" ? ' active' : ''}}">
+												<a class="nav-link tm-nav-link" href="{{ path('company') }}">Our Company</a>
+											</li>
+											<li class="nav-item {{ruta == " services" ? ' active' : ''}}">
+												<a class="nav-link tm-nav-link" href="{{ path('services') }}">Services</a>
+											</li>
+											<li class="nav-item {{ruta == " proyectos" ? ' active' : ''}}">
+												<a class="nav-link tm-nav-link" href="{{ path('proyectos') }}">Proyectos</a>
+											</li>
+											<li class="nav-item {{ruta == " contact" ? ' active' : ''}}">
+												<a class="nav-link tm-nav-link" href="{{ path('contact') }}">Contact</a>
+											</li>
+											<li class="nav-item {{ruta == " login" ? ' active' : ''}}">
+												<a class="nav-link tm-nav-link" href="{{ path('login') }}">Login</a>
+												{{nombre_usuario}}
+											</li>
+										</ul>
+										<!-- Links -->
+
+									</div>
+									<!-- Collapsible content -->
+
+								</nav>
+								<!--/.Navbar-->
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endblock %}
+			{% block inicio %}{% endblock %}
+			<main>
+				{% block main %}{% endblock %}
+				{% block footer %}
+					<footer>
+						Copyright &copy; 2020 New Vision
+						
+						                - Design:
+						<a href="https://templatemo.com" rel="sponsored" target="_parent" title="css templates">TemplateMo</a>
+					</footer>
+				{% endblock %}
+			</main>
+		</div>
+		{% block scrpt %}{% endblock %}
+	</body>
+
+</html>
