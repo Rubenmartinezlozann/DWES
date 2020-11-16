@@ -15,7 +15,6 @@ class AddController extends AbstractController
      */
     public function index(EntityManagerInterface $entityManager)
     {
-        $id=0;
         foreach ($this->proyectos as $key => $value) {
             $categoria = new Categoria();
             $categoria->setNombre($key);
@@ -27,7 +26,6 @@ class AddController extends AbstractController
                 $proyect->setImagen($proyecto['img']);
                 $entityManager->persist($proyect);
             }
-            $id++;
         }
         $entityManager->flush();
 
